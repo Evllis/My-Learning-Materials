@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>立即执行函数表达式</title>
+</head>
+<body>
+<script>
+    // 一种方法
+    (function add() {
+        console.log(11111);
+    })();
+
+    // 另一种方法
+    (function bdd() {
+        console.log(22222);
+    }());
+
+    // 自执行函数，传递参数
+    var a = 100;
+    (function(num) {
+        console.log(num.a);
+    })(window);
+
+    // 自执行函数不能缺少分号；，否则会报错。
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1.2_条件与循环</title>
+</head>
+<body>
+<!-- 条件判断 -->
+<div id="box-1">
+    <p v-if="hehe">这只是一段测试文字</p>
+</div>
+<!-- 循环列表 -->
+<div id="box-2">
+    <ul>
+        <li v-for="item in items">
+            {{ item.text }}
+        </li>
+    </ul>
+</div>
+<script src="../vue.js" type="text/javascript"></script>
+<script>
+    // 条件判断
+    var oBox1 = new Vue({
+        el: '#box-1',
+        data: {
+            hehe: true
+        }
+    });
+    // 循环列表
+    var oBox2 = new Vue({
+        el: '#box-2',
+        data: {
+            items: [
+                {text: '我是文字1'},
+                {text: '我是文字2'},
+                {text: '我是文字3'}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

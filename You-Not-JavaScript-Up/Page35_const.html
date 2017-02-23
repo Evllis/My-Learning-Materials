@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>const</title>
+</head>
+<body>
+<script>
+    var foo = true;
+    if (foo) {
+        { // 显式的块作用域
+            var a = 2;
+            const b = 3;
+
+            a = 3; // 正常
+            //b = 4; // 报错
+            //console.log(b);
+        }
+    }
+    console.log(a); // 3
+    console.log(b); // undefined
+</script>
+</body>
+</html>

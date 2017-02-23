@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>隐藏内部实现</title>
+</head>
+<body>
+<script>
+    function doSomeThing(a) {
+        b = a + doSomeThingElse(a * 2);
+        console.log(b * 3);
+    }
+    function doSomeThingElse(a) {
+        return a - 1;
+    }
+    var b;
+    doSomeThing(2);
+
+
+
+
+    // 修改后
+
+
+    function toChange(a) {
+        function toChangeElse(a) {
+            return a - 1;
+        }
+        var b;
+        b = a + toChangeElse(a * 2);
+        console.log(b * 3);
+    }
+    toChange(2);
+</script>
+</body>
+</html>

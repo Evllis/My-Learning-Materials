@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>try / catch</title>
+</head>
+<body>
+<script>
+    try {
+        undefined();
+    }
+    catch(err) {
+        console.log(err); // 只在内部块作用域中可以访问到err变量
+    }
+    console.log(err); // 外部访问不到err变量
+</script>
+</body>
+</html>
