@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../vue.js"></script>
+	<title>1.4.1_基础例子</title>
+</head>
+<body>
+	<div id="box">
+		<div class="price">
+			单价:
+			<span>{{ firstPrice }}</span>
+		</div>
+		<div class="num">
+			数量:
+			<input v-model="num" type="text" />
+		</div>
+		<a @click="showme">结算</a>
+		<p v-if="isHide">{{ addTotal }}</p>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#box',
+			data: {
+				firstPrice: 37,
+				isHide: false,
+				num: 0
+			},
+			computed: {
+				addTotal: function() {
+					return this.firstPrice * this.num;
+				}
+			},
+			methods: {
+				showme: function() {
+					this.isHide = true;
+				}
+			}
+		});
+	</script>
+</body>
+</html>
