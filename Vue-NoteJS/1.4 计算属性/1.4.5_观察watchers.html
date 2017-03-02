@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../vue.js" type="text/javascript"></script>
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<style>
+		a {
+			color: white;
+			border: 1px solid black;
+			background-color: red;
+			display: inline-block;
+			padding: 0 15px;
+			line-height: 24px;
+			cursor: pointer;
+		}
+		.message .toRed {
+			color: red;
+		}
+		.message .toGreen {
+			color: green;
+		}
+	</style>
+	<title>1.4.5_观察watchers</title>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li v-for="items in contentList"></li>
+		</ul>
+		<p class="message">
+			当前状态:
+			<span v-if="showInit">未操作</span>
+			<span v-if="showMe" :class=" fontColor ? 'toRed' : 'toGreen' ">{{ logMsg }}</span>
+		</p>
+		<p>当前信息为{{ num }}条</p>
+		<a :data-isclick="isClick" @click="getInfo" href="javascript:;">获取</a>
+	</div>
+	<script>
+		var timer = null;
+		var vm = new Vue({
+			el: '#box',
+			data: {
+				num: 0,
+				isClick: false,
+				showMe: false,
+				showInit: true,
+				logMsg: '未操作',
+				fontColor: true,
+				contentList: []
+			},
+			watch: {
+				isClick: function(value) {
+					this.getDetails();
+				},
+				content: function(value) {
+					this.appendCont();
+				}
+			},
+			methods: {
+				getInfo: function() {
+					this.showInit = false;
+					this.isClick = true;
+					this.showMe = true;
+					this.fontColor = true;
+					this.logMsg = '正在获取中, 请稍等......';
+				},
+				getDetails: function() {
+					this.isClick = false;
+					var _that = this;
+					clearTimeout(timer);
+					timer = setTimeout(function() {
+						var _url = 'https://api.douban.com/v2/movie/top250';
+						$.ajax({
+							type: 'GET',
+							url: _url,
+							dataType: 'jsonp',
+							jsonp: 'callback',
+							success: function(data) {
+								_that.contentList = data.subjects;
+							}
+						});
+						_that.fontColor = false;
+						_that.logMsg = '获取成功!';
+					}, 500);
+				}
+			}
+		});
+	</script>
+</body>
+</html>
