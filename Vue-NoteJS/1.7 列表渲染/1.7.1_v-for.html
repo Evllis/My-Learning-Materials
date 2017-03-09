@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../vue.js" type="text/javascript"></script>
+    <title>1.7.1_v-for</title>
+</head>
+<body>
+    <!-- 基本用法 -->
+    <div id="box1">
+        <ul class="list">
+            <li v-for="items in list"  class="items">
+                {{ items.text }}
+            </li>
+        </ul>
+    </div>
+    <!-- 访问父作用域的数据 -->
+    <div id="box2">
+        <ul class="list">
+            <li v-for="(items, index) in list" class="items">
+                {{ parentMsg }}{{ index }} : {{ items.color }}
+            </li>
+        </ul>
+    </div>
+    <script>
+
+        // 基本用法
+        var vm1 = new Vue({
+            el: '#box1',
+            data: {
+                list: [
+                    { 'text': '苹果' },
+                    { 'text': '香蕉' },
+                    { 'text': '火柴' }
+                ]
+            }
+        });
+
+        // 访问父作用域的数据
+        var vm2 = new Vue({
+            el: '#box2',
+            data: {
+                parentMsg: '我是父亲',
+                list: [
+                    { 'color': '黄色' },
+                    { 'color': '红色' },
+                    { 'color': '黑色' }
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
