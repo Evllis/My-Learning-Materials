@@ -9,7 +9,7 @@
     <!-- 基本用法 -->
     <div id="box1">
         <ul class="list">
-            <li v-for="items in list"  class="items">
+            <li v-for="items in list" class="items">
                 {{ items.text }}
             </li>
         </ul>
@@ -21,6 +21,40 @@
                 {{ parentMsg }}{{ index }} : {{ items.color }}
             </li>
         </ul>
+    </div>
+    <!-- Template v-for -->
+    <div id="box3">
+        <ul>
+            <template v-for="items in list">
+                <li>
+                    <a :href="items.link"></a>
+                    <span>{{ items.title }}</span>
+                </li>
+            </template>
+        </ul>
+    </div>
+    <!--
+        对象 v-for
+        items: 对象的值
+          key: 对象的属性
+        index: 索引值
+    -->
+    <div id="box4">
+        <div v-for="(items, key, index) in list">
+            {{ key }} 第{{ index }}项 : {{ items }}
+        </div>
+    </div>
+
+    <!-- 范围 v-for, 也可以是整数循环 -->
+    <div id="box5">
+        <div v-for="items in 10">
+            {{ items }}
+        </div>
+    </div>
+
+    <!-- 组件和v-for -->
+    <div id="box6">
+        <div is="cont-item" v-for="items in list" :title="items.text"></div>
     </div>
     <script>
 
@@ -45,6 +79,61 @@
                     { 'color': '黄色' },
                     { 'color': '红色' },
                     { 'color': '黑色' }
+                ]
+            }
+        });
+
+        // Template v-for
+        var vm3 = new Vue({
+            el: '#box3',
+            data: {
+                list: [
+                    {
+                        'link': 'http://www.baidu.com',
+                        'title': '百度'
+                    },
+                    {
+                        'link': 'http://www.qq.com',
+                        'title': '腾讯'
+                    },
+                    {
+                        'link': 'http://www.163.com',
+                        'title': '网易'
+                    }
+                ]
+            }
+        });
+
+        // 对象 v-for
+        var vm4 = new Vue({
+            el: '#box4',
+            data: {
+                list: {
+                    'name': '小明',
+                    'age': 30,
+                    'sex': '男',
+                    'height': '182cm'
+                }
+            }
+        });
+
+        // 范围 v-for, 也可以是整数循环
+        var vm5 = new Vue({
+            el: '#box5'
+        });
+
+        // 组件和v-for
+        Vue.component('cont-item', {
+            template: '<li>{{ title }}</li>',
+            props: ['title']
+        });
+        var vm6 = new Vue({
+            el: '#box6',
+            data: {
+                list: [
+                    { 'text': '人力' },
+                    { 'text': '物力' },
+                    { 'text': '财力' }
                 ]
             }
         });
