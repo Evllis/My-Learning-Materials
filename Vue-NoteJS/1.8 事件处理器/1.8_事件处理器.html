@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../vue.js" type="text/javascript"></script>
+    <title>1.8_事件处理器</title>
+</head>
+<body>
+    <!-- 监听事件 -->
+    <div id="box1">
+        <a href="javascript:void(0);" v-on:click="num = Math.random();">点击生成随机数</a>
+        <p>{{ num }}</p>
+    </div>
+
+    <!-- 方法事件处理器 -->
+    <div id="box2">
+        <a href="javascript:void(0);" v-on:click="addStr">点击生成</a>
+        <p>{{ str }}</p>
+    </div>
+
+    <!-- 内联处理器方法 -->
+    <div id="box3">
+        <a href="javascript:void(0);" v-on:click="alertStr('这是文字', $event)">内联处理器方法</a>
+    </div>
+
+    <!-- 事件修饰符 -->
+    <!-- 点击不跳转，并且只会触发一次 -->
+    <div id="box4">
+        <a href="" v-on:click.prevent.once="consoleStr">事件修饰符</a>
+    </div>
+
+    <!-- 按键修饰符 -->
+    <div id="box5">
+        <input v-on:keyup.enter="addNum" />
+        <p>{{ num }}</p>
+    </div>
+    <script>
+        // 监听事件
+        var vm1 = new Vue({
+            el: '#box1',
+            data: {
+                num: Math.random()
+            }
+        });
+
+        // 方法事件处理器
+        var vm2 = new Vue({
+            el: '#box2',
+            data: {
+                str: '我是一段文字'
+            },
+            methods: {
+                addStr: function(event) {
+                    if (event) {
+                        this.str = this.str + '111111' + event.target.tagName;
+                    }
+                }
+            }
+        });
+
+        // 内联处理器方法
+        var vm3 = new Vue({
+            el: '#box3',
+            methods: {
+                alertStr: function(str, event) {
+                    alert('内容：' + str + '，事件：' + event);
+                    console.log(event);
+                }
+            }
+        });
+
+        // 事件修饰符
+        var vm4 = new Vue({
+            el: '#box4',
+            methods: {
+                consoleStr: function() {
+                    console.log('事件修饰符');
+                }
+            }
+        });
+
+        // 按键修饰符
+        var vm5 = new Vue({
+            el: '#box5',
+            data: {
+                num: 0
+            },
+            methods: {
+                addNum: function() {
+                    this.num ++;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

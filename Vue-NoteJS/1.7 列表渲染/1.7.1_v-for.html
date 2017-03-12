@@ -54,7 +54,39 @@
 
     <!-- 组件和v-for -->
     <div id="box6">
-        <div is="cont-item" v-for="items in list" :title="items.text"></div>
+        <div is="cont-item"
+             v-for="items in list"
+             :title="items.text"
+             :href="items.href"
+             @alert-to="alertCont(items)">
+        </div>
+    </div>
+
+    <!-- v-for with v-if -->
+    <!-- 同一节点上时，v-for比v-if有更高的优先级 -->
+    <div id="box7">
+        <div v-for="items in list" v-if="items !== 2">
+            {{ items }}
+        </div>
+        <!-- 也可以用v-if来控制整个循环是否输出，也可以运用在template上 -->
+        <div v-if="isFor">
+            <span v-for="args in arg">
+                {{ args }}
+            </span>
+        </div>
+        <div v-else>
+            <span>没有生成新数据.</span>
+        </div>
+    </div>
+
+    <!--
+        key
+        有时候为了达到重用和数据排序效果，需要给每个元素添加唯一的key
+    -->
+    <div id="box8">
+        <li v-for="items in list" :key="items.id">
+            {{ items.text }}
+        </li>
     </div>
     <script>
 
@@ -123,17 +155,41 @@
         });
 
         // 组件和v-for
+        // 把绑定的title，href属性，以props形式传进模板里面
+        // $emit 当前实例所要执行的事件
         Vue.component('cont-item', {
-            template: '<li>{{ title }}</li>',
-            props: ['title']
+            template: '<li>' +
+            '{{ title }}' +
+            '<a @click="$emit(\'alert-to\')">{{ href }}</a>' +
+            '</li>',
+            props: ['title', 'href']
         });
         var vm6 = new Vue({
             el: '#box6',
             data: {
                 list: [
-                    { 'text': '人力' },
-                    { 'text': '物力' },
-                    { 'text': '财力' }
+                    { 'text': '人力', 'href': 'http://www.111.com' },
+                    { 'text': '物力', 'href': 'http://www.222.com' },
+                    { 'text': '财力', 'href': 'http://www.333.com' }
+                ]
+            },
+            methods: {
+                alertCont: function(targetObj) {
+                    console.log('标题：' + targetObj.text + '，' + '链接：' + targetObj.href);
+                }
+            }
+        });
+
+        // v-for with v-if
+        var vm7 = new Vue({
+            el: '#box7',
+            data: {
+                isFor: true,
+                list: [1, 2, 3, 4, 5],
+                arg: [
+                    '今天是好天气',
+                    '又是一个周末天',
+                    '我又来了'
                 ]
             }
         });
