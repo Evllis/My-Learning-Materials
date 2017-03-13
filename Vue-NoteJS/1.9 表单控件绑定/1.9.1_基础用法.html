@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../vue.js"></script>
+    <title>1.9.1_基础用法</title>
+</head>
+<body>
+    <!-- 文本 -->
+    <div id="box1">
+        <textarea v-model="msg" placeholder="input text"></textarea>
+        <p>我是一段文字: {{ msg }}</p>
+    </div>
+
+    <!-- 多行文本 -->
+    <div id="box2">
+        <textarea v-model="msg" placeholder="input text"></textarea>
+        <p style="white-space: pre;">我是一段文字: {{ msg }}</p>
+    </div>
+
+    <!-- 单个复选框 -->
+    <div id="box3">
+        <input type="checkbox" id="checkbox" v-model="checked" />
+        <label for="checkbox">{{ checked }}</label>
+    </div>
+
+    <!-- 多个复选框 -->
+    <div id="box4">
+        <input id="xm" type="checkbox" value="小明" v-model="checkArr" />
+        <label for="xm">小明</label>
+        <input id="xh" type="checkbox" value="小红" v-model="checkArr" />
+        <label for="xh">小红</label>
+        <input id="xl" type="checkbox" value="小李" v-model="checkArr" />
+        <label for="xl">小李</label>
+        <p>checked To Names: {{ checkArr }}</p>
+    </div>
+
+    <!-- 单选按钮 -->
+    <div id="box5">
+        <input type="radio" id="apple" value="苹果" v-model="radioArr" />
+        <label for="apple">苹果</label>
+        <input type="radio" id="bananas" value="香蕉" v-model="radioArr" />
+        <label for="bananas">香蕉</label>
+        <p>checked To Name: {{ radioArr }}</p>
+    </div>
+
+    <!-- 单选列表 -->
+    <div id="box6">
+        <select v-model="selected">
+            <option>红色</option>
+            <option>绿色</option>
+            <option>蓝色</option>
+        </select>
+        <p>selected: {{ selected }}</p>
+    </div>
+
+    <!-- 多选列表 -->
+    <div id="box7">
+        <select v-model="selected" multiple>
+            <option value="人类">人类</option>
+            <option value="动物">动物</option>
+            <option value="机械">机械</option>
+        </select>
+        <p>selected: {{ selected }}</p>
+    </div>
+
+    <!-- 动态列表 -->
+    <div id="box8">
+        <select v-model="selected">
+            <option v-for="items in list">
+                {{ items }}
+            </option>
+        </select>
+        <p>selected: {{ selected }}</p>
+    </div>
+    <script>
+        // 文本
+        var vm1 = new Vue({
+            el: '#box1',
+            data: {
+                msg: ''
+            }
+        });
+
+        // 多行文本
+        var vm2 = new Vue({
+            el: '#box2',
+            data: {
+                msg: ''
+            }
+        });
+
+        // 单个复选框
+        var vm3 = new Vue({
+            el: '#box3',
+            data: {
+                checked: ''
+            }
+        });
+
+        // 多个复选框
+        var vm4 = new Vue({
+            el: '#box4',
+            data: {
+                checkArr: []
+            }
+        });
+
+        // 单选按钮
+        var vm5 = new Vue({
+            el: '#box5',
+            data: {
+                radioArr: ''
+            }
+        });
+
+        // 单选列表
+        var vm6 = new Vue({
+            el: '#box6',
+            data: {
+                selected: ''
+            }
+        });
+
+        // 多选列表
+        var vm7 = new Vue({
+            el: '#box7',
+            data: {
+                selected: ''
+            }
+        });
+
+        // 动态列表
+        var vm8 = new Vue({
+            el: '#box8',
+            data: {
+                selected: '',
+                list: ['公司', '人力', '物力']
+            }
+        });
+    </script>
+</body>
+</html>
