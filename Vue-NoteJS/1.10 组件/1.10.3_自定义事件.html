@@ -132,28 +132,50 @@
         });
 
         // 非父子组件通信
+        // 使用空的vue实例作为中英事件总线处理
         var eventBus = new Vue();
         var vm3 = new Vue({
             el: '#example3',
             components: {
                 'evllis-component-one': {
-                    template: '<a href="javascript:void(0);" @click="showOne">模板一</a>',
-                    methods: {
-                        showOne: function() {
-                            eventBus.$emit('showOne');
-                        }
-                    }
-                },
-                'evllis-component-two': {
-                    template: '<a href="javascript:void(0);">模板二{{ info }}</a>',
+                    template: '<a href="javascript:void(0);" @click="showOne">模板一{{ info }}</a>',
                     data: function() {
                         return {
                             info: ''
                         }
                     },
                     created: function() {
-                        eventBus.$on('showOne', function() {
-                            this.info = '哈哈哈';
+                        eventBus.$on('addRandom', function() {
+                            this.info = '';
+                            this.info = Math.random() * 10 + 1
+                        }.bind(this));
+                    },
+                    methods: {
+                        showOne: function() {
+                            // 要执行的事件函数, 后面不带参数就是不传参, 也可以传递参数进去
+                            eventBus.$emit('showOne', this.info);
+                        }
+                    }
+                },
+                'evllis-component-two': {
+                    template: '<a href="javascript:void(0);" @click="addRandom">模板二{{ info }}</a>',
+                    data: function() {
+                        return {
+                            info: ''
+                        }
+                    },
+                    methods: {
+                        addRandom: function() {
+                            eventBus.$emit('addRandom');
+                        }
+                    },
+                    created: function() {
+                        // 监听模板A中的事件并执行
+                        eventBus.$on('showOne', function(value) {
+                            if (value === '' || value === undefined) {
+                                value = '空';
+                            }
+                            this.info = '哈哈哈, 传递进来的数字是{' + value + '}';
                         }.bind(this));
                     }
                 }
