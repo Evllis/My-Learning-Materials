@@ -29,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="2.1 实例与选项.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1 实例与选项.html">
+      <file leaf-file-name="2.1_实例与选项.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1_实例与选项.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+            <state relative-caret-position="460">
+              <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -67,6 +67,7 @@
         <option value="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html" />
         <option value="$PROJECT_DIR$/Introduction-and-application-of-Vue/111.html" />
         <option value="$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1 实例与选项.html" />
+        <option value="$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1_实例与选项.html" />
       </list>
     </option>
   </component>
@@ -154,6 +155,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My-Learning-Materials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="My-Learning-Materials" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Introduction-and-application-of-Vue" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="2. 基础特性" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -162,7 +181,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.splitter.proportion" value="0.24975514" />
     <property name="nodejs_interpreter_path" value="D:/Program Files (x86)/nodejs/node" />
@@ -307,12 +326,12 @@
       <workItem from="1490802921648" duration="168000" />
       <workItem from="1490889046313" duration="15000" />
       <workItem from="1490970192745" duration="751000" />
-      <workItem from="1491489725134" duration="385000" />
+      <workItem from="1491489725134" duration="1401000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28148000" />
+    <option name="totallyTimeSpent" value="29164000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -672,10 +691,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1 实例与选项.html">
+    <entry file="file://$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1_实例与选项.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+        <state relative-caret-position="460">
+          <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
           <folding />
         </state>
       </provider>
