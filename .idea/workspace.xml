@@ -4,11 +4,26 @@
     <list default="true" id="d5c20f27-9c9f-4b45-84ff-91f4c4b3f8e5" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dictionaries/Evllis.xml" afterPath="" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+<<<<<<< HEAD
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html" afterPath="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/My-Learning-Materials.iml" afterPath="$PROJECT_DIR$/.idea/My-Learning-Materials.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+=======
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html" afterPath="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/My-Learning-Materials.iml" afterPath="$PROJECT_DIR$/.idea/My-Learning-Materials.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+<<<<<<< HEAD
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,6 +44,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="2.1_实例与选项.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1_实例与选项.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -44,6 +60,21 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="392">
               <caret line="14" column="24" lean-forward="false" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="1.10.6_杂项.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="193">
+              <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+=======
+      <file leaf-file-name="2.1_实例与选项.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1_实例与选项.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="27" column="11" lean-forward="true" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
               <folding />
             </state>
           </provider>
@@ -70,10 +101,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/test.html" />
         <option value="$USER_HOME$/Desktop/test.html" />
         <option value="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/dfsdf.vue.html" />
+        <option value="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/test.html" />
         <option value="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/button.vue" />
+        <option value="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/app.vue" />
+        <option value="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/base.vue" />
         <option value="$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html" />
         <option value="$PROJECT_DIR$/Introduction-and-application-of-Vue/111.html" />
         <option value="$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1 实例与选项.html" />
@@ -95,10 +128,19 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
+    <option name="width" value="1366" />
+    <option name="height" value="728" />
+=======
     <option name="x" value="52" />
     <option name="y" value="23" />
     <option name="width" value="1388" />
+<<<<<<< HEAD
     <option name="height" value="877" />
+=======
+    <option name="height" value="825" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -138,6 +180,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      <pane id="Scratches" />
+=======
+      <pane id="Scope" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -152,8 +202,15 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+<<<<<<< HEAD
+      <pane id="Scope" />
+=======
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
       <pane id="Scratches" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -290,6 +347,13 @@
       <workItem from="1490606058003" duration="2772000" />
       <workItem from="1490609380059" duration="644000" />
       <workItem from="1490771413840" duration="6579000" />
+<<<<<<< HEAD
+      <workItem from="1490841188895" duration="17036000" />
+      <workItem from="1490928544395" duration="637000" />
+      <workItem from="1492061562712" duration="1233000" />
+      <workItem from="1492066395053" duration="171000" />
+      <workItem from="1492066570275" duration="96000" />
+=======
       <workItem from="1490798507023" duration="437000" />
       <workItem from="1490799726275" duration="60000" />
       <workItem from="1490800194032" duration="133000" />
@@ -304,14 +368,27 @@
       <workItem from="1490802921648" duration="168000" />
       <workItem from="1490889046313" duration="15000" />
       <workItem from="1490970192745" duration="751000" />
+<<<<<<< HEAD
       <workItem from="1491489725134" duration="1509000" />
       <workItem from="1491639345822" duration="6035000" />
       <workItem from="1492093084791" duration="210000" />
+=======
+      <workItem from="1491489725134" duration="1401000" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="35517000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="44613000" />
+=======
+    <option name="totallyTimeSpent" value="29164000" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -323,11 +400,29 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="52" y="23" width="1388" height="877" extended-state="0" />
+=======
+<<<<<<< HEAD
+    <frame x="0" y="0" width="1366" height="728" extended-state="1" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25225905" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933104" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+=======
+    <frame x="52" y="23" width="1388" height="825" extended-state="0" />
+    <editor active="true" />
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26481345" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32933104" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
+=======
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -400,6 +495,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/button.vue" />
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+=======
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
         </state>
       </provider>
     </entry>
@@ -508,6 +648,26 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/test.html" />
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/dfsdf.vue.html" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.js">
+=======
     <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="505">
@@ -530,6 +690,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -548,6 +709,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/xsdf.vue" />
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/test.html" />
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/button.vue" />
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/app.vue" />
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/base.vue" />
+    <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.5_动态组件.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-939">
+          <caret line="8" column="27" lean-forward="true" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+          <folding />
+=======
         </state>
       </provider>
     </entry>
@@ -569,11 +745,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Vue-NoteJS/1.10 组件/1.10.6_杂项.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="193">
+          <caret line="8" column="19" lean-forward="false" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+=======
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -659,8 +840,14 @@
     <entry file="file://$PROJECT_DIR$/Introduction-and-application-of-Vue/111.html" />
     <entry file="file://$PROJECT_DIR$/Introduction-and-application-of-Vue/2. 基础特性/2.1_实例与选项.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="728">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+=======
+        <state relative-caret-position="216">
+          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+>>>>>>> 5858cd6f6ac7743f2a6e382d7c70fd77ab089105
+>>>>>>> ba2d5b9948e5787f3d9988835adc6b4e10bf840d
           <folding />
         </state>
       </provider>
