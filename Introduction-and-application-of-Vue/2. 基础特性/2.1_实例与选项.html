@@ -19,12 +19,82 @@
             <p>这是一个示例模板</p>
         </div>
     </template>
+
+    <!-- 2.1.2 数据 -->
+    <div id="example2">
+        <p>
+            这是一个数字：
+            <span>{{ num }}</span>
+            <span>{{ test }}</span>
+        </p>
+        <example2-tpl :title="myTitle" :content="myTest"></example2-tpl>
+        <example2-tpl :title="myTitle" :content="myTest"></example2-tpl>
+    </div>
+    <template id="tpl2">
+        <!-- 模板中，只允许有一个根元素，不允许有更多根元素存在，否则会报错 -->
+        <div>
+            <h2>{{ title }}</h2>
+            <p>{{ content }}</p>
+            <button @click="getNum">获取的数字是：{{ number }}</button>
+        </div>
+    </template>
+
+    <!-- 2.1.3 方法 -->
+    <div id="example3">
+        <button @click="alert">点我弹出</button>
+        <button @click="alertTest">自定义事件</button>
+    </div>
     <script>
-        // 2.1.1模板
+        // 2.1.1 模板
         // 模板的内容会替换掉挂载元素中的其它元素
         var vm1 = new Vue({
             el: '#example1',
             template: '#example1-tpl'
+        });
+
+        // 2.1.2 数据
+        // 因为vm2实例代理了data2变量对象，他们共用的是同一个对象，所以不管修改的是data2变量，还是vm2实例中的data，
+        // 他们的值都会同时发生变化，在初始化时传入对象，它们将会是响应式的，否则，不会是响应式。
+        var data2 = { num: 1, test: 2222, myTitle: '我是标题', myTest: '我是内容' };
+        // 在模板数据中，data数据应该返回的总是一个新对象，使每个组件中的data数据都是独立的
+        Vue.component('example2-tpl', {
+            props: ['title', 'content'],
+            data: function() {
+                return {
+                    number: Math.random()
+                }
+            },
+            template: '#tpl2',
+            methods: {
+                getNum: function() {
+                    this.number = Math.random()
+                }
+            }
+        });
+        var vm2 = new Vue({
+            el: '#example2',
+            data: data2
+        });
+        data2.num = 200;
+        // data2.num = 200; vm2.num = 200;
+        vm2.num = 300;
+        // data2.num = 300; vm2.num = 300;
+
+        // 1.2.3 方法
+        var vm3 = new Vue({
+            el: '#example3',
+            data: {
+                a: 1
+            },
+            methods: {
+                alert: function() {
+                    alert(this.a);
+                }
+            }
+        });
+        vm3.$on('alertTest', function() {
+            console.log(this);
+            alert('我是自定义事件');
         });
     </script>
 </body>
