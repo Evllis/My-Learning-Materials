@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="" type="text/css" rel="stylesheet"/>
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>2.1.3_方法</title>
+</head>
+<body>
+    <div id="app">
+        {{ num }}
+        <a href="javascript:void(0);" @click="getRandom">获取一个随机数</a>
+    </div>
+    <script>
+        // 就像原生JS一样，使用v-on方法的简写，给指定元素绑定一个点击事件。
+        // 把要添加的方法，写在methods属性里，我们要做的只是实时修改data里面的数据，让页面实时响应。
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                num: 0
+            },
+            methods: {
+                getRandom: function() {
+                    this.num = Math.random();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

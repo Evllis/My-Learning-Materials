@@ -15,9 +15,13 @@
         {{ b }}
     </div>
     <div id="app1">
-        <my-tpl></my-tpl>
+        <my-tpl :test="kkk"></my-tpl>
+        <my-tpl :test="kkk"></my-tpl>
+        <my-tpl :test="kkk"></my-tpl>
     </div>
     <script>
+        // 例1中，vm的数据中代理了arr对象，他们是响应式的，
+        // 修改arr对象，或者修改vm实例中的数据，值都会发生变化。
         const arr = {
             a: 100,
             b: null
@@ -28,7 +32,10 @@
         });
         vm.$data.b = 200;
 
-        const test = {
+        // 例子2中，同样适用于模板，模板中传入了原始对象，修改的时候，也会响应式的修改原始对象。
+        // 但我们却不希望是这样的结果，我们希望每个组件模板中，修改的是自身模板里的数据，而不是全局。
+        // 这个时候，我们的做法是，每个模板实例中，返回一个data对象，使之区别开来。
+        var kkk = {
             number: 100
         };
         Vue.component('my-tpl', {
@@ -38,11 +45,25 @@
                     num: 0
                 }
             },
-            template: '<p>{{ num }} {{ test }}</p>'
+            template: '<p>' +
+            '{{ num }} {{ test.number }}' +
+            '<span @click="thisTo" style="color: red;">点击修改当前</span>' +
+            '<span @click="thisGo" style="color: blue;">点击修改全局</span>' +
+            '</p>',
+            methods: {
+                thisTo: function() {
+                    this.num ++;
+                },
+                thisGo: function() {
+                    this.$options.propsData.test.number = this.$options.propsData.test.number + 10;
+                }
+            }
         });
         const vm1 = new Vue({
             el: '#app1',
-            data: test
+            data: {
+                kkk: kkk
+            }
         });
     </script>
 </body>
