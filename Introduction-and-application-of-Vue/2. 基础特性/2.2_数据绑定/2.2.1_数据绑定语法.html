@@ -7,9 +7,169 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="" type="text/css" rel="stylesheet"/>
     <script src="../../vue.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/lodash/4.13.1/lodash.js"></script>
     <title>2.2.1_数据绑定语法</title>
 </head>
 <body>
-这只是一段测试文字这只是一段测试文字这只是一段测试文字这只是一段测试文字这只是一段测试文字一段测试文字这只是一段测试文字这只是一一段测试文字这只是一段测试文字这只是一一段测试文字这只是一段测试文字这只是一一段测试文字这只是一段测试文字这只是一
+
+    <!-- 文本插值 -->
+    <div id="ex1">
+        {{ msg }}
+    </div>
+
+    <!-- HTML属性 -->
+    <div id="ex2" :data-id="attrType">HTML属性</div>
+
+    <!-- 绑定表达式 -->
+    <div id="ex3">
+        {{ num + 1 }}
+        {{ active ? '我是真的' : '我是假的' }}
+        {{ string.split('').reverse().join(',') }}
+    </div>
+
+    <!-- 过滤器，内置的10个过滤器 -->
+    <div id="ex4">
+        <!-- 字符串首字母转换成大写 -->
+        <div>{{ msg }}</div>
+        <!-- 字符串转换成大写 -->
+        <div>{{ stringUpperCase }}</div>
+        <!-- 字符串转换成小写 -->
+        <div>{{ stringLowerCase }}</div>
+        <!-- 将数字转化成货币符号，并且自动添加小数点 -->
+        <div>{{ autoAmount }}</div>
+        <!-- 字符串复数化处理 -->
+        <div v-for="(item, index) in 5">{{ pluralize(index) }}</div>
+        <!-- 延时执行指定函数, 可以借助debounce功能函数库来实现更复杂的计算 -->
+        <input v-model="searchQuery" placeholder="请输入文字，测试弹窗">
+        <strong>{{ searchQuery }}</strong>
+        <!-- 只显示数组中指定的前几个数据，替换内置过滤器limitBy -->
+        <div v-for="(item, index) in ddd">{{ index < 3 ? item : '' }}</div>
+        <!-- 过滤数组中某些数据，替换内置过滤器filterBy -->
+        <div v-for="(item, index) in names">{{ itemFilter(item, index) }}</div>
+        <!-- 为指定数组进行排序策略，替换内置过滤器orderBy -->
+        <div v-for="item in orderArr">{{ item }}</div>
+    </div>
+
+    <!-- 指令 -->
+    <div id="ex5">
+        <!-- 参数 -->
+        <p v-bind:data-id="test">ex5: 参数，非简写方式</p>
+        <p :data-id="test">ex5：参数，简写方式</p>
+        <!-- 事件 -->
+        <p v-on:click="alert">ex5：事件，非简写方式</p>
+        <p @click="alert">ex5：事件，简写方式</p>
+        <!-- 修饰符，stop修饰符相当于原生JS的event.stopPropagation()，停止冒泡 -->
+        <!-- 更多修饰符请参考官网文档，https://cn.vuejs.org/v2/guide/events.html#事件修饰符 -->
+        <p @click.stop="addNum">{{ number }}</p>
+    </div>
+    <script>
+
+        // 文本插值
+        let vm1 = new Vue({
+            el: '#ex1',
+            data: {
+                msg: '我是一段插入文字'
+            }
+        });
+
+        // 绑定HTML属性
+        let vm2 = new Vue({
+            el: '#ex2',
+            data: {
+                attrType: 'toRed'
+            }
+        });
+
+        // 绑定表达式
+        // 绑定中的表达式，只能包含单个的表达式，并不支持JS语句。
+        // 如果需要支持更复杂的JS语句，可以使用过滤器或者计算属性来处理。
+        let vm3 = new Vue({
+            el: '#ex3',
+            data: {
+                num: 0,
+                active: true,
+                string: '测试文字'
+            }
+        });
+
+        // 过滤器
+        let vm4 = new Vue({
+            el: '#ex4',
+            data: {
+                msg: 'haha',
+                stringUpperCase: 'this is a book',
+                stringLowerCase: 'MY IS UPPERCASE',
+                autoAmount: 3344212,
+                searchQuery: '',
+                ddd: ['dd', 'dff', 'cc', 'ee', 'aa', 'bb', 'ff'],
+                names: ['color1.0', 'color2.0', 'color1.1', 'color1.0', 'color3.0'],
+                orderArr: [
+                    { name: 'open', age: 10 },
+                    { name: 'today', age: 20 },
+                    { name: 'dog', age: 15 },
+                    { name: 'cake', age: 7 },
+                    { name: 'sky', age: 22 }
+                ]
+            },
+            watch: {
+                searchQuery() {
+                    // 监听input的输入值，1000延迟后，执行弹窗
+                    this.testTxt();
+                }
+            },
+            mounted() {
+                // capitalize过滤器替换，首字母大写
+                this.msg = this.msg[0].toUpperCase() + this.msg.slice(1);  // Haha
+                // uppercase过滤器，字符串转换成大写
+                this.stringUpperCase = this.stringUpperCase.toUpperCase(); // THIS IS A BOOK
+                // lowercase过滤器，字符串转换成小写
+                this.stringLowerCase = this.stringLowerCase.toLowerCase(); // my is uppercase
+                // 数字转换成货币形式，简单的处理还行。
+                // 如果复杂一点的话，建议使用accounting货币库来实现可靠的货币格式化
+                this.autoAmount = '$' + this.autoAmount.toFixed(2); // $3344212.00
+                // 按年龄排序或者按姓名排序
+                this.orderFilter('age');
+            },
+            methods: {
+                pluralize(value) {
+                    if (value === 0) {
+                        return 'no num';
+                    } else if (value === 1) {
+                        return '1 num';
+                    } else {
+                        return value + 'num';
+                    }
+                },
+                testTxt: _.debounce(function() {
+                    alert();
+                }, 1000),
+                itemFilter(value, index) {
+                    if (value.indexOf('1.0') !== -1) {
+                        return '第' + index + '个：' + value;
+                    }
+                },
+                orderFilter(type) {
+                    this.orderArr =  _.orderBy(this.orderArr, type);
+                }
+            }
+        });
+
+        // 指令
+        let vm5 = new Vue({
+            el: '#ex5',
+            data: {
+                test: 'demo',
+                number: 0
+            },
+            methods: {
+                alert() {
+                    alert('指令事件');
+                },
+                addNum() {
+                    this.number ++;
+                }
+            }
+        });
+    </script>
 </body>
 </html>
