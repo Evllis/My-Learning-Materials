@@ -6,10 +6,81 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="" type="text/css" rel="stylesheet"/>
-    <script src="" type="text/javascript"></script>
+    <script src="../../vue.js" type="text/javascript"></script>
+    <style>
+        .font-size {
+            font-size: 30px;
+        }
+        .font-color {
+            color: red;
+        }
+        .class-a {
+            font-style: italic;
+        }
+        .class-b {
+            color: blue;
+        }
+        .font-bold {
+            font-weight: bold;
+        }
+        .to-green {
+            color: green;
+        }
+    </style>
     <title>2.2.4_Class与Style绑定</title>
 </head>
 <body>
-
+    <div id="ex1">
+        <div>
+            <div>=================== 华丽的分割线 ========================</div>
+            <h2>1. Class绑定</h2>
+            <p>1.1_对象语法</p>
+            <!-- vm实例中的active为真时, class为font-size, 为假时, class为font-color -->
+            <!-- 渲染结果: <span class="font-size">略...</span> -->
+            <span :class="{ 'font-size': active, 'font-color': !active }">对象语法</span>
+            <p>1.2_数组语法</p>
+            <!-- 数组中的变量, 会替换成vm实例中的属性值 -->
+            <!-- 渲染结果: <span class="class-a class-b">略...</span> -->
+            <span :class="[ classA, classB ]">数组语法</span>
+            <p>1.3_三元表达式语法</p>
+            <span :class="[ 'font-bold', isGreen ? 'to-green' : '' ]">三元表达式语法</span>
+            <div>=================== 华丽的分割线 ========================</div>
+            <h2>2. 内联样式绑定</h2>
+            <p>1.1_对象语法</p>
+            <!-- 对象语法的格式, 要用驼峰式的形式来写, 要不然会出错, 比如: font-size, 要写成fontSize -->
+            <span :style="fontStyle">内联样式, 对象语法</span>
+            <!-- 也可以绑定单个属性, 或者直接写一个字符串 -->
+            <span :style="{ fontSize: fontStyle.fontSize, color: 'red' }">绑定单个属性, 或者直接写个字符串</span>
+            <!-- 在遇到需要绑定多个对象的情况下, 就要使用数组的形式来写了 -->
+            <p>1.2_数组语法</p>
+            <span :style="[ styleA, styleB ]">数组语法</span>
+        </div>
+    </div>
+    <script>
+        let vm1 = new Vue({
+            el: '#ex1',
+            data: {
+                active: true,
+                classA: 'class-a',
+                classB: 'class-b',
+                isGreen: true,
+                fontStyle: {
+                    color: 'gray',
+                    fontSize: '24px'
+                },
+                styleA: {
+                    color: 'orange'
+                },
+                styleB: {
+                    fontSize: '18px',
+                    fontWeight: 'bold',
+                    border: '1px solid black'
+                },
+                trans: {
+                    transform: 'translate(0)'
+                }
+            }
+        });
+    </script>
 </body>
 </html>
