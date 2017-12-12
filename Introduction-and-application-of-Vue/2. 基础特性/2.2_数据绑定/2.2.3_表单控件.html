@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="" type="text/css" rel="stylesheet"/>
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>2.2.3_表单控件</title>
+</head>
+<body>
+    <!-- v-model指令可以对表单控件实现双向数据绑定, 当修改表单元素的时候, 该元素的值与vm中对应的属性值也会同时更新, 反之也是如此. -->
+    <div id="ex1">
+        <div>
+            <!-- 1. text输入框 -->
+            <p>1. text输入框</p>
+            <input type="text" v-model="textValue" placeholder="请输入相关数据" />
+            <p>你现在输入的值是: {{ textValue }}</p>
+            <!-- 2. 单选框 -->
+            <p>2. 单选框</p>
+            <input type="radio" value="男" v-model="selectSex" /> 男
+            <input type="radio" value="女" v-model="selectSex" /> 女
+            <p>你现在选择的是: {{ selectSex }}</p>
+            <!-- 3. 复选框 -->
+            <p>3. 复选框</p>
+            <input type="checkbox" v-model="selectType" />
+            <p>你现在的选择状态是: {{ selectType }}</p>
+            <!-- 4. 多个复选框, 多个复选框使用一个值的时候, 使用数组来控制响应 -->
+            <p>4. 多个复选框</p>
+            <input type="checkbox" value="sky" v-model="selectMulti" />
+            <input type="checkbox" value="people" v-model="selectMulti" />
+            <input type="checkbox" value="dog" v-model="selectMulti" />
+            <p>你现在选择的是: {{ selectMulti }}</p>
+            <!-- 5. select, 和checkbox元素一样, 多选的时候, 绑定到数组 -->
+            <p>5. select单选与多选</p>
+            <select v-model="selected">
+                <option>广济</option>
+                <option>辽宁</option>
+                <option>广东</option>
+            </select>
+            <p>你的单选值是: {{ selected }}</p>
+            <select v-model="selectedAA" multiple>
+                <option>山东</option>
+                <option>山西</option>
+                <option>福建</option>
+            </select>
+            <p>你的多选值是: {{ selectedAA }}</p>
+        </div>
+    </div>
+    <div id="ex2">
+        <!-- 表单控件的值同样也可以绑定在vm实例的动态属性上 -->
+        <div>
+            <p>1. checkbox</p>
+            <!-- 选中状态后, 动态绑定到true-value上, 如果是true值是1, 反之, 是2; -->
+            <input type="checkbox" v-model="checkedShow" :true-value="1" :false-value="2" />
+            <p>我绑定的动态值是: {{ checkedShow }}</p>
+            <p>2. radio单选框</p>
+            <input type="radio" v-model="checked" :value="man" />男
+            <input type="radio" v-model="checked" :value="girl" />女
+            <p>我绑定的动态值是: {{ checked }}</p>
+            <p>3. 对象字面量</p>
+            <select v-model="selected">
+                <option :value="{ name: '小明', age: 18 }">小明</option>
+                <option :value="{ name: '小红', age: 17 }">小红</option>
+                <option :value="{ name: '张总', age: 34 }">张总</option>
+            </select>
+            <p>动态值是: {{ selected }}</p>
+            <p>动态值的姓名是: {{ selected.name }}</p>
+            <p>动态值的年龄是: {{ selected.age }}</p>
+        </div>
+    </div>
+    <div id="ex3">
+        <p>参数特性</p>
+        <!-- 通过一些参数, 可以很方便的处理一些常规操作, 参数特性的作用类似于vue修饰符的作用. -->
+        <p>1. lazy</p>
+        <!-- 不再input事件中同步刷新数据了, 而是change事件中才更新数据, 也就是当input的值发生改变的时候才会更新 -->
+        <input type="text" v-model.lazy="inputValue" />
+        输入的值是: {{ inputValue }}
+        <p>2. number</p>
+        <!-- 会自动将用户输入转化为Number数字类型, 如果转换的结果为NAN, 那就直接返回原值. -->
+        <input type="number" v-model.number.lazy="inputNumber" />
+        转换的数字是: {{ inputNumber }}
+        <p>3. trim</p>
+        <!-- 自动过滤用户输入内容的首尾空格 -->
+        <input type="text" v-model.trim="textTrim" />
+        去除首尾空格: {{ textTrim }}
+    </div>
+    <script>
+        let vm1 = new Vue({
+            el: '#ex1',
+            data: {
+                textValue: '',
+                selectSex: '',
+                selectType: '',
+                selectMulti: [],
+                selected: '',
+                selectedAA: []
+            }
+        });
+        let vm2 = new Vue({
+            el: '#ex2',
+            data: {
+                checkedShow: '',
+                checked: '',
+                man: '我是男的, 哈哈',
+                girl: '我是女的, 嘿嘿',
+                selected: ''
+            }
+        });
+        let vm3 = new Vue({
+            el: '#ex3',
+            data: {
+                inputValue: '',
+                inputNumber: '',
+                textTrim: ''
+            }
+        });
+    </script>
+</body>
+</html>

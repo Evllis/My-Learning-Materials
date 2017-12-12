@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="" type="text/css" rel="stylesheet"/>
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>2.4.1_方法及内联语句处理器</title>
+</head>
+<body>
+    <div id="ex1">
+        <p>1. v-on绑定事件</p>
+        <!-- 通过v-on绑定相关的事件名称, 支持所有的原生事件, 把methods中的方法作为事件处理器来执行. -->
+        <button v-on:click="alertCont">弹出一个弹窗</button>
+        <!-- 也可以写成简写方式 -->
+        <button @click="alertCont1">简写方式</button>
+        <p>2. 支持内联语句的绑定事件</p>
+        <!-- 虽然支持内联语句, 但仅限于一个语句. -->
+        <button @click="alertHe('我要要传值的内容')">内联语句绑定事件</button>
+        <p>3. 获取dom事件的原生对象</p>
+        <button @click="getObject1">获取dom事件的原生对象</button>
+        <button @click="getObject2($event)">传值获取dom事件的原生对象</button>
+        <button @click="getObject3()">这样是获取不到dom事件的原生对象的</button>
+    </div>
+    <script>
+        let vm1 = new Vue({
+            el: '#ex1',
+            methods: {
+                alertCont() {
+                    alert(1111);
+                },
+                alertCont1() {
+                    alert(2222);
+                },
+                alertHe(text) {
+                    alert(text);
+                },
+                getObject1(event) {
+                    console.log(event);
+                },
+                getObject2(event) {
+                    console.log(event);
+                },
+                getObject3(event) {
+                    // 获取不到, 会弹出undefined
+                    console.log(event);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

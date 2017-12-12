@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="" type="text/css" rel="stylesheet"/>
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>2.2.2_计算属性</title>
+</head>
+<body>
+    <div id="ex1">
+        {{ number }}
+        {{ countNum }}
+    </div>
+    <script>
+        // 实时修改number, 总数countNum都会实时改变, 自动计算
+        // 页面初始化时执行自动计算的时候, 默认操作的只是get方法,
+        // 此时countNum的值是500; set方法没有执行, number仍然是300;
+        let vm1 = new Vue({
+            el: '#ex1',
+            data: {
+                number: 300
+            },
+            computed: {
+                countNum: {
+                    set(value) {
+                        this.number = value * 100;
+                    },
+                    get() {
+                        return this.number + 200;
+                    }
+                }
+            },
+            mounted() {
+                // 比如我们在实例初始化时, 修改countNum的值, 效果是一样的, 它会执行下面set与get方法.
+                this.countNum = 20;
+            }
+        });
+        // 而当我们此时修改countNum的值时, 此时会执行set方法, 并且自动更新get方法
+        // vm1.countNum = 20, 20会在执行set方法时, 作为value参数的值传进去, 此时number的值是2000
+        // this.number = 2000;
+        // 然后会再次自动执行get来达到自动计算的效果, 2000 + 200, 所以countNum的返回值是2200;
+        // countNum = 2200;
+    </script>
+</body>
+</html>

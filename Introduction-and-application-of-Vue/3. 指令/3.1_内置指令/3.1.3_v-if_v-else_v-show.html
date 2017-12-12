@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="" type="text/css" rel="stylesheet"/>
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>3.1.3_v-if_v-else_v-show</title>
+</head>
+<body>
+    v-if/v-else/v-show 这三个指令主要用于根据条件展示对应的模板内容.
+    主要说明的一点是:
+    v-if与v-show的区别就在于:
+    v-if在条件为false的情况下并不进行模板的编译, 而v-show则会在模板编译好之后将元素隐藏起来.
+    v-if的切换消耗要比v-show高, 但初始条件为false的情况下, v-if的初始渲染要稍快.
+    换句话说: 如果只是在刚渲染的时候来进行切换, 就使用v-if比较好.
+    如果是在状态之间频繁的切换, 比如侧边栏, 选项卡之类, 就使用v-show比较好.
+</body>
+</html>
