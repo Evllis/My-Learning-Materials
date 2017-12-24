@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="" type="text/css" rel="stylesheet"/>
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>2.4.2_修饰符</title>
+</head>
+<body>
+    <div id="ex1">
+        <p>1. 使用修饰符</p>
+        <!-- .prevent 相当于 event.preventDefault() -->
+        <!-- .stop 相当于 event.stopPropagation() -->
+        <a href="http://www.baidu.com/" @click.prevent="doThis">阻止默认跳转</a>
+        <p>2. 修饰符也可以串联使用</p>
+        <a href="http://www.qq.com" @click.prevent.stop="toGo">阻止默让跳转, 并且阻止事件冒泡</a>
+        <p>3. 也可以只加修饰符, 不绑定事件</p>
+        <a href="http://www.163.com" @click.prevent.stop>不绑定事件的修饰符</a>
+        <p>4. .self修饰符</p>
+        <!-- 点击dom1按钮时, 因为没有添加.stop阻止冒泡修饰符, 所以会弹二下, 内容分别是: button click, click from inner -->
+        <!-- 点击dom2按钮时, 因为添加了.stop阻止冒泡修饰符, 所以只会弹一下, 内容是: just button click -->
+        <!-- 为什么不管点击哪个按钮, 都不会弹出click from self内容呢? -->
+        <!-- 因为: 只有点击自身的时候, 才会执行该回调事件, 也就是说, 只有点击div的时候, 才会按顺序执行相关的事件 -->
+        <!-- 依次弹出: click from inner, click from self -->
+        <div style="width: 300px; border: 1px solid black;" @click="saySelf('click from inner')" @click.self="saySelf('click from self')">
+            <button class="dom1" @click="saySelf('button click')">button click</button>
+            <button class="dom2" @click.stop="saySelf('just button click')">just button click</button>
+        </div>
+        <p>5. 按键修饰符, 监听键盘事件中的按钮</p>
+        <!-- 监听键盘的回车按钮, 回车后, 执行提交事件submit(回车的keycode值为13) -->
+        <input @keyup.13="submit" />
+        <!-- 也可以使用vue为我们提供的内置修饰别名. -->
+        <!-- 分别为: enter, tab, delete, esc, space, up, down, left, right -->
+        <input @keyup.enter="submit" />
+        <!-- 自定义别名 -->
+        <!-- 可以通过 Vue.config.keyCodes.别名 = keyCode值 方法来自定义别名 -->
+        <input @keyup.haha="test" />自定义别名
+    </div>
+    <script>
+        Vue.config.keyCodes.haha = 13;
+        let vm1 = new Vue({
+            el: '#ex1',
+            methods: {
+                doThis(event) {
+                    alert('阻止默认跳转');
+                },
+                toGo() {
+                    console.log('阻止默让跳转, 并且阻止事件冒泡');
+                },
+                saySelf(str) {
+                    alert(str);
+                },
+                submit() {
+                    alert('提交成功');
+                },
+                test() {
+                    alert('自定义别名');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

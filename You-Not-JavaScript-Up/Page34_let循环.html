@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let循环</title>
+</head>
+<body>
+<script>
+//    for (let i=0; i<10; i++) {
+//        console.log(i);
+//    }
+//    console.log(i); // undefined
+
+    // 使用块变量let时，在循环外面是访问不到循环变量的
+
+//    var foo = true, baz = 10;
+//    if (foo) {
+//        var bar = 3;
+//        if (baz > bar) {
+//            console.log(baz);
+//        }
+//    }
+//    console.log(bar); // 3 var声明成为全局变量
+
+//    var foo = true, baz = 10;
+//    if (foo) {
+//        let bar = 3;
+//        if (baz > bar) {
+//            console.log(baz);
+//        }
+//    }
+//    console.log(bar); // undefined
+
+    // 上面的例子也可以看成是这种格式
+
+    var foo = true, baz = 10;
+    if (foo) {
+        {
+            let bar = 3;
+            if (baz > bar) {
+                console.log(baz); // 10
+            }
+            console.log(bar); // 3
+        }
+        console.log(bar); // undefined，在bar块作用域的外面，是访问不到里面的变量
+    }
+    console.log(bar); // undefined，依然访问不到里面的块作用域
+</script>
+</body>
+</html>

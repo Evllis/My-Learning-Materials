@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="../jquery-3.1.1.min.js" type="text/javascript"></script>
+    <style>
+        .img {
+            display: inline-block;
+        }
+        .img img {
+            display: block;
+            width: 200px;
+            height: 150px;
+            vertical-align: middle;
+        }
+        span {
+            display: block;
+            height: 30px;
+            text-align: center;
+        }
+    </style>
+    <title>73页，点击图片时生成一个随机数</title>
+</head>
+<body>
+    <div class="box">
+        <div class="img">
+            <img src="20160427004300_QfKwt.jpeg" alt="">
+        </div>
+        <div class="img">
+            <img src="20160427004300_QfKwt.jpeg" alt="">
+        </div>
+        <div class="img">
+            <img src="20160427004300_QfKwt.jpeg" alt="">
+        </div>
+        <div class="img">
+            <img src="20160427004300_QfKwt.jpeg" alt="">
+        </div>
+    </div>
+</body>
+<script>
+    $(document).ready(function() {
+        $('.img').on('click', function() {
+            $('.img span').remove();
+            var num = Math.floor(Math.random() * 5 + 5);
+            $(this).append('<span>您的折扣是：'+ num +'</span>');
+        })
+    });
+</script>
+</html>

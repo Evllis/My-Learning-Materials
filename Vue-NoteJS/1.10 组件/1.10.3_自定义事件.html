@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../vue.js"></script>
+    <script src="https://cdn.rawgit.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e/raw/98739fb8ac6779cb2da11aaa9ab6032e52f3be00/currency-validator.js"></script>
+    <title>1.10.3_自定义事件</title>
+</head>
+<body>
+
+    <p>-------------------------- 使用v-on绑定自定义事件 ------------------------</p>
+    <div id="example1">
+        <p>列表: {{ arr }}</p>
+        <!-- add-num, del-num需要监听的事件,  -->
+        <evllis-component-add @add-num="showArr"></evllis-component-add>
+        <evllis-component-del @del-num="showArr"></evllis-component-del>
+    </div>
+
+    <p>-------------------------- 使用自定义事件的表单输入组件 ------------------------</p>
+    <div id="example2">
+        <evllis-component v-model="dog"></evllis-component>
+        <evllis-component v-model="apple"></evllis-component>
+        <evllis-component v-model="cake"></evllis-component>
+        <p>{{ price }}</p>
+    </div>
+
+    <p>-------------------------- 非父子组件通信 ------------------------</p>
+    <div id="example3">
+        <evllis-component-one></evllis-component-one>
+        <evllis-component-two></evllis-component-two>
+    </div>
+
+    <script>
+
+        // 使用v-on绑定自定义事件
+        var vm1 = new Vue({
+            el: '#example1',
+            data: {
+                arr: []
+            },
+            methods: {
+                showArr: function(type, value) {
+                    if (type !== 'del') {
+                        this.arr.push(value);
+                    } else {
+                        if (this.arr.length === 0) {
+                            alert('已经没有数据啦!');
+                            return false;
+                        }
+                        this.arr.pop();
+                    }
+                }
+            },
+            components: {
+                'evllis-component-add': {
+                    template: '<a href="javascript:void(0);" @click="add">添加的数字是: {{ number }}</a>',
+                    data: function() {
+                        return {
+                            number: parseInt(Math.random() * 10 + 1),
+                            type: 'add'
+                        }
+                    },
+                    methods: {
+                        add: function() {
+                            this.number = parseInt(Math.random() * 10 + 1);
+                            this.$emit('add-num', this.type, this.number);
+                        }
+                    }
+                },
+                'evllis-component-del': {
+                    template: '<a href="javascript:void(0);" @click="del">删除一个数字</a>',
+                    data: function() {
+                        return {
+                            type: 'del'
+                        }
+                    },
+                    methods: {
+                        del: function() {
+                            this.$emit('del-num', this.type);
+                        }
+                    }
+                }
+            }
+        });
+
+        // 使用自定义事件的表单输入组件
+        var vm2 = new Vue({
+            el: '#example2',
+            data: {
+                dog: 0,
+                apple: 0,
+                cake: 0
+            },
+            computed: {
+                price: function() {
+                    return ((this.dog * 100 + this.apple * 100 + this.cake * 100) / 100).toFixed(2);
+                }
+            },
+            components: {
+                'evllis-component': {
+                    template: '<div>' +
+                    '$' +
+                    '<input ref="input" :value="value" @input="updataValue($event.target.value)" />' +
+                    '</div>',
+                    data: function() {
+                        return {
+                            value: 0
+                        }
+                    },
+                    props: {
+                        value: {
+                            type: Number,
+                            default: 0
+                        }
+                    },
+                    methods: {
+                        updataValue: function(value) {
+                            var result = currencyValidator.parse(value, this.value);
+                            if (result.warning) {
+                                alert(result.warning);
+                            }
+                            this.$emit('input', result.value);
+                        }
+                    }
+                }
+            }
+        });
+
+        // 非父子组件通信
+        // 使用空的vue实例作为中英事件总线处理
+        var eventBus = new Vue();
+        var vm3 = new Vue({
+            el: '#example3',
+            components: {
+                'evllis-component-one': {
+                    template: '<a href="javascript:void(0);" @click="showOne">模板一{{ info }}</a>',
+                    data: function() {
+                        return {
+                            info: ''
+                        }
+                    },
+                    created: function() {
+                        eventBus.$on('addRandom', function() {
+                            this.info = '';
+                            this.info = Math.random() * 10 + 1
+                        }.bind(this));
+                    },
+                    methods: {
+                        showOne: function() {
+                            // 要执行的事件函数, 后面不带参数就是不传参, 也可以传递参数进去
+                            eventBus.$emit('showOne', this.info);
+                        }
+                    }
+                },
+                'evllis-component-two': {
+                    template: '<a href="javascript:void(0);" @click="addRandom">模板二{{ info }}</a>',
+                    data: function() {
+                        return {
+                            info: ''
+                        }
+                    },
+                    methods: {
+                        addRandom: function() {
+                            eventBus.$emit('addRandom');
+                        }
+                    },
+                    created: function() {
+                        // 监听模板A中的事件并执行
+                        eventBus.$on('showOne', function(value) {
+                            if (value === '' || value === undefined) {
+                                value = '空';
+                            }
+                            this.info = '哈哈哈, 传递进来的数字是{' + value + '}';
+                        }.bind(this));
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

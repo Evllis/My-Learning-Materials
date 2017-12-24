@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link href="" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="../vue.js"></script>
+    <title>1.10.4_使用slot分发内容</title>
+</head>
+<body>
+    <!-- 编译作用域 -->
+    <div id="example1">
+        {{ msg }}
+        <!-- 如果想给组件添加绑定属性, 就应该在组件作用域里面添加, 而不是外面 -->
+        <evllis-component :class="toGreen">
+            {{ msg }}
+        </evllis-component>
+    </div>
+    <script>
+        var vm1 = new Vue({
+            el: '#example1',
+            data: {
+                msg: '我是父组件',
+                toGreen: 'green'
+            },
+            components: {
+                'evllis-component': {
+                    template: '<a :class="toRed">{{ msg }}</a>',
+                    data: function() {
+                        return {
+                            msg: '我是子组件',
+                            toRed: 'red'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

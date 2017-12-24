@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数中的作用域</title>
+</head>
+<body>
+<script>
+    function foo(a) {
+        var b = 3;
+        // 一些代码
+        function bar() {
+            // 一些代码
+            console.log(11111);
+        }
+        var c = 4;
+    }
+    bar(); // defined
+    console.log(a, b ,c); // 失败
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv=X-UA-Compatible content="IE=edge,chrome=1">
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="" type="text/css" rel="stylesheet"/>
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>2.3.3_列表渲染</title>
+</head>
+<body>
+    <div id="ex1">
+        <!-- 循环数组 -->
+        <p>1. 循环数组</p>
+        <ul>
+            <li v-for="item in items">姓名: {{ item.name }}, 年龄: {{ item.age }}</li>
+        </ul>
+        <!-- 指定索引的循环数组 -->
+        <p>2. 指定索引的循环数组</p>
+        <ul>
+            <!-- key组数据设定唯一的标识, 可以在渲染过程中尽量复用原有对象的作用域及DOM元素 -->
+            <li v-for="(item, index) in items" :key="item.id">第 {{ index }} 个, 姓名: {{ item.name }}, 年龄: {{ item.age }}</li>
+            <!-- 当点击按钮的时候, 会修改VM实例中的数据, 因为我们设定了唯一的标识ID, 所以当修改的ID与值不一样的时候, 才会进行渲染 -->
+            <!-- ID与值与原有数据相同的情况下, 不会进行渲染与DOM更新, 达到了复用的效果 -->
+            <button @click="modify">修改</button>
+        </ul>
+        <p>3. 循环对象</p>
+        <ul>
+            <!-- item为对象的值, key为对象的键名 -->
+            <li v-for="(item, key) in obj">属性名: {{ key }}, 值: {{ item }}</li>
+        </ul>
+        <p>4. 循环整数</p>
+        <ul>
+            <li v-for="num in 10">我是第: {{ num }} 个数</li>
+        </ul>
+    </div>
+</body>
+<script>
+    let vm1 = new Vue({
+        el: '#ex1',
+        data: {
+            items: [
+                { id: 1, name: '小明', age: 12 },
+                { id: 2, name: '小张', age: 34 },
+                { id: 3, name: '小红', age: 22 }
+            ],
+            obj: {
+                type: 'click',
+                type: 'move',
+                type: 'remove'
+            }
+        },
+        methods: {
+            modify() {
+                this.items = [
+                    { id: 1, name: '小明', age: 12 },
+                    { id: 5, name: '小张222', age: 34 },
+                    { id: 6, name: '小红333', age: 22 }
+                ];
+            }
+        }
+    });
+</script>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../vue.js" type="text/javascript"></script>
+	<script src="../jquery-3.1.1.min.js"></script>
+	<style>
+		body, dl, dd {
+			margin: 0;
+			padding: 0;
+		}
+		.get-btn {
+			color: white;
+			border: 1px solid black;
+			background-color: red;
+			display: inline-block;
+			padding: 0 15px;
+			line-height: 24px;
+			cursor: pointer;
+		}
+		dt, dd {
+			float: left;
+		}
+		a, img {
+			vertical-align: top;
+		}
+		.message .toRed {
+			color: red;
+		}
+		.message .toGreen {
+			color: green;
+		}
+		.main-cont {
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.item-move {
+			margin-top: 10px;
+			border: 4px solid #ccc;
+			content: "";
+			display: block;
+			clear: both;
+			overflow: hidden;
+			padding: 15px;
+			position: relative;
+		}
+		.item-img {
+			margin-right: 40px;
+		}
+		.item-img > a {
+			display: block;
+		}
+		.item-img > a > img {
+			width: 224px;
+			height: 300px;
+			border: 1px solid black;
+		}
+		.item-details .title {
+			margin: 15px 0;
+		}
+		.item-details .title .title-cn {
+			font-size: 30px;
+			font-weight: bold;
+		}
+		.item-details .title .title-en {
+			font-size: 18px;
+		}
+		.item-details .casts > a {
+			margin-right: 10px;
+		}
+		.item-details .director,
+		.item-details .casts,
+		.item-details .genres,
+		.item-details .year{
+			margin-bottom: 10px;
+		}
+		.item-details .year > span {
+			margin-left: 5px;
+		}
+		.item-details .average {
+			position: absolute;
+			right: 30px;
+			top: 11px;
+			font-size: 36px;
+			font-weight: bold;
+			font-style: oblique;
+			color: #05a505;
+		}
+		.item-details .play a {
+			text-decoration: none;
+		    color: white;
+		    background-color: #0f6cde;
+		    line-height: 34px;
+		    display: inline-block;
+		    padding: 0 20px;
+		    -webkit-border-radius: 6px;
+		    -moz-border-radius: 6px;
+		    -o-border-radius: 6px;
+		    border-radius: 6px;
+		}
+		.item-details .other-info {
+			margin-bottom: 40px;
+		}
+	</style>
+	<title>1.4.5_观察watchers</title>
+</head>
+<body>
+	<div id="box">
+		<div class="main-cont">
+			<dl class="item-move" v-for="(items, index) in contentList">
+				<dt class="item-img">
+					<a :href="items.alt">
+						<img :src="items.images.large" />
+					</a>
+				</dt>
+				<dd class="item-details">
+					<div class="title">
+						<span class="title-cn">{{ items.title }}</span>
+						<span class="title-en">{{ items.original_title }}</span>
+					</div>
+					<div class="director">
+						导演：
+						<a v-for="director in items.directors" :href="director.alt">
+							{{ director.name }}
+						</a>
+					</div>
+					<div class="casts">
+						演员：
+						<a v-for="cast in items.casts" :href="cast.alt">
+							{{ cast.name }}
+						</a>
+					</div>
+					<div class="genres">
+						类型：
+						<span v-for="genre in items.genres">
+							{{ genre }}
+						</span>
+					</div>
+					<div class="year">年份：<span>{{ items.year }}</span></div>
+					<div class="other-info">
+						浏览：
+						<span><mark>{{items.collect_count}}</mark>人看过</span>
+					</div>
+					<span class="average">{{ items.rating.average }}</span>
+					<div class="play">
+						<a :href="items.alt">播放</a>
+					</div>
+				</dd>
+			</dl>
+		</div>
+		<p class="message">
+			当前状态:
+			<span v-if="showInit">未操作</span>
+			<span v-if="showMe" :class=" fontColor ? 'toRed' : 'toGreen' ">{{ logMsg }}</span>
+		</p>
+		<p>当前信息为{{ num }}条</p>
+		<a :data-isclick="isClick" @click="getInfo" href="javascript:;" class="get-btn">获取</a>
+	</div>
+	<script>
+		var timer = null;
+		var _num = 0;
+		var vm = new Vue({
+			el: '#box',
+			data: {
+				num: 0,
+				isClick: false,
+				showMe: false,
+				showInit: true,
+				logMsg: '未操作',
+				fontColor: true,
+				contentList: []
+			},
+			watch: {
+				isClick: function(value) {
+					this.getDetails();
+				},
+				content: function(value) {
+					this.appendCont();
+				}
+			},
+			methods: {
+				getInfo: function() {
+					this.showInit = false;
+					this.isClick = true;
+					this.showMe = true;
+					this.fontColor = true;
+					this.logMsg = '正在获取中, 请稍等......';
+				},
+				getDetails: function() {
+					if (_num > 260) {
+						return false;
+					}
+					this.isClick = false;
+					var _that = this;
+					clearTimeout(timer);
+					timer = setTimeout(function() {
+						var _url = 'https://api.douban.com/v2/movie/top250?start=' + _num;
+						$.ajax({
+							type: 'GET',
+							url: _url,
+							dataType: 'jsonp',
+							jsonp: 'callback',
+							success: function(data) {
+								_that.contentList = data.subjects;
+								_num = _num + 20;
+							}
+						});
+						_that.fontColor = false;
+						_that.logMsg = '获取成功!';
+					}, 500);
+				}
+			}
+		});
+	</script>
+</body>
+</html>

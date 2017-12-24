@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="../vue.js" type="text/javascript"></script>
+	<title>1.4.3_计算属性 VS Watched Property</title>
+</head>
+<body>
+	<div id="box">
+		<!-- watch这样写 -->
+		<span :style="{ color: showColor }">我是一段文字</span>
+		<!-- computed计算属性可以这样写 -->
+		<span :style="{ color: myColor }">我是计算属性的文字</span>
+	</div>
+	<script>
+		var vm = new Vue({
+			el: '#box',
+			data: {
+				toRed: 103,
+				toGreen: 55,
+				toBlue: 183,
+				showColor: ''
+			},
+			// 能过监听值变化,改变相应的数据.然而这里的命令却显得那么重复
+			watch: {
+				toRed: function(val) {
+					this.showColor = 'rgb('+ val + ',' + this.toGreen + ',' + this.toBlue +')';
+				},
+				toGreen: function(val) {
+					this.showColor = 'rgb('+ this.toRed + ',' + val + ',' + this.toBlue +')';
+				},
+				toBlue: function(val) {
+					this.showColor = 'rgb('+ this.toRed + ',' + this.toGreen + ',' + val +')';
+				}
+			},
+			// 相比而言,使用计算属性会更方便,轻便一些吧.
+			computed: {
+				myColor: function() {
+					return 'rgb('+ this.toRed + ',' + this.toGreen + ',' + this.toBlue +')';
+				}
+			}
+		});
+
+		// 使用什么方法也不是一个规定死的, 视具体情况决定使用什么样的方法是最好的.
+	</script>
+</body>
+</html>

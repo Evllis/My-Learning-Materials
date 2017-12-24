@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>with</title>
+</head>
+<body>
+<script>
+    // 原对象
+    var num = {
+        a: 1,
+        b: 2,
+        c: 3
+    };
+    // with函数，修改原属性，改变作用域
+    function change(obj) {
+        with(obj) {
+            a = 10;
+            b = 20;
+            c = 30;
+            d = 40;
+        }
+    }
+    console.log(num); // 1, 2, 3
+    change(num);
+    console.log(d); // d被泄漏到全局，40
+    console.log(num); // 10, 20, 30
+</script>
+</body>
+</html>
