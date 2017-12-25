@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../vue.js"></script>
+    <title>3.1.8_v-el</title>
+</head>
+<body>
+    <div id="exp1">
+        <h2>v-el</h2>
+        <p>为dom元素注册一个索引, 然后可以通过这个索引直接访问dom元素.</p>
+        <p v-el:demo class="test-style">可以能过vm.$els.demo来获取到我哦.</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: '#exp1'
+        });
+        console.log(vm.$els.demo);
+        // 已移除, 统一替换为 vm.$ref
+    </script>
+</body>
+</html>
