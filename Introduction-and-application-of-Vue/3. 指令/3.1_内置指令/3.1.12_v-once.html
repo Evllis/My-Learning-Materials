@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>3.1.12_v-once</title>
+</head>
+<body>
+    <div id="app">
+        <h1>v-once</h1>
+        <p>标明元素或者组件只渲染一次, 在随后发生数据绑定的变化或更新, 该元素或者组件都不会再次被编译或者更新.</p>
+        <div v-once>{{ msg }}</div>
+        <div>这个在更新: {{ msg }}</div>
+        <input v-model="msg" />
+    </div>
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 'dddddddd'
+            }
+        });
+
+    </script>
+</body>
+</html>
