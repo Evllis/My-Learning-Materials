@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>3.4.3_update函数触发变化</title>
+</head>
+<body>
+    <div id="app1">
+        <div v-values="params"></div>
+    </div>
+    <script>
+        Vue.directive('values', {
+            bind(el, bind, node) {
+                // bind钩子执完后, 不会再执行update钩子
+                console.log('~~~~~~~~~~ bind ~~~~~~~~~');
+                console.log(el, bind, node);
+            },
+            update(el, bind, valueNode, oldNode) {
+                // 只要组件发生重绘, update钩子就会执行.
+                // 如果要过滤不必要的更新, 可以通过bind.value === bind.oldValue来判断
+                // 如果新值与旧值相同, 则不更新.
+                if (bind.value === bind.oldValue) return; 
+                console.log('~~~~~~~~~ update ~~~~~~~~~~');
+                console.log(el, bind, valueNode, oldNode);
+            }
+        });
+        let vm = new Vue({
+            el: '#app1',
+            data: {
+                params: 1
+            }
+        });    
+    </script>
+</body>
+</html>
