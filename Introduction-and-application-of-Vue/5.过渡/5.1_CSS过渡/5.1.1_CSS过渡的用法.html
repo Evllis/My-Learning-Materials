@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>5.1.1_CSS过渡的用法</title>
+</head>
+<body>
+    <div id="app">
+        <transition name="slide-fade">
+            <div v-if="show">过渡效果</div>
+        </transition>
+        <div>
+            <button @click="toStartup()">切换状态</button>
+        </div>
+    </div>
+    <style>
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+        .slide-fade-enter, .slide-fade-leave-to {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                show: false
+            },
+            methods: {
+                toStartup() {
+                    this.show = !this.show;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

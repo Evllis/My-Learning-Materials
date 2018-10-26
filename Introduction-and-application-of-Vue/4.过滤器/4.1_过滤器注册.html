@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./../vue.js" type="text/javascript"></script>
+    <title>4.1_过滤器注册</title>
+</head>
+<body>
+    <p>
+        Vue提供一个全局方法filter来注册一个自定义过滤器.
+        接受过滤器ID和过滤器函数两个参数.
+    </p>
+    <div id="app">
+        {{ number | conver }}
+        {{ date | toDate }}
+        {{ num | toFormat('$') }}
+        {{ num1 | toFormat('%') }}
+    </div>
+    <script>
+        Vue.filter('toDate', function(value) {
+            if (!value instanceof Date) return false;
+            return value.toLocaleDateString();
+        });
+        Vue.filter('conver', value => {
+            if (typeof value !== 'string') return false;
+            return Number(value).toLocaleString();
+        });
+        // 参数可以自定义传入
+        Vue.filter('toFormat', (value, params) => {
+            return value + params;
+        });
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                number: '455622145632',
+                date: new Date(),
+                num: 20,
+                num1: 100
+            }
+        });
+    </script>
+</body>
+</html>

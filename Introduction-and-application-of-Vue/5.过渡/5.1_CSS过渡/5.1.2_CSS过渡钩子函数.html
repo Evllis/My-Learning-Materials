@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../../vue.js" type="text/javascript"></script>
+    <title>5.1.2_CSS过渡钩子函数</title>
+</head>
+<body>
+    <div id="app">
+        <transition 
+            @before-enter="beforeEnter"
+            @enter="enter"
+            @after-enter="afterEnter"
+            @enter-cancelled="enterCancelled"
+            @before-leave="beforeLeave">
+            <div v-if="show">过渡钩子函数</div>
+        </transition>
+        <button @click="show = !show;">点我</button>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                show: false
+            },
+            methods: {
+                beforeEnter(el) {
+                    console.log('beforeEnter');
+                    el.style.fontSize = '50px';
+                },
+                enter(el) {
+                    console.log('enter');
+                    el.style.color = 'red';
+                },
+                afterEnter(el) {
+                    console.log('afterEnter');
+                    el.innerHTML = 'afterEnter';
+                },
+                enterCancelled(el) {
+                    console.log('enterCancelled');
+                    el.innerHTML = 'enterCancelled';
+                },
+                beforeLeave(el) {
+                    console.log('beforeLeave');
+                    el.innerHTML = 'beforeLeave';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../vue.js" type="text/javascript"></script>
+    <title>4.3_动态参数</title>
+</head>
+<body>
+    <div id="app">
+        <p>实时传入动态参数来进行渲染.</p>
+        <input type="number" v-model="price" />
+        <span>{{ newPrice | dynamic(price) }}</span>
+    </div>
+    <script>
+        Vue.filter('dynamic', (newPrice, price) => {
+            return Number(newPrice) + Number(price);
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                price: 150,
+                newPrice: 20
+            }
+        });
+    </script>
+</body>
+</html>
