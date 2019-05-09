@@ -9,8 +9,7 @@
 <script>
     function foo(str, a) {
         'use strict';
-        // 欺骗！
-        eval(str);
+        eval(str); // 欺骗！
         console.log(a, b);
     }
     var b = 2;
